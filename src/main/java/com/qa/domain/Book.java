@@ -16,7 +16,7 @@ public class Book {
 	private String bookTitle;
 	@Size(min = 2, max = 80)
 	private String genre;
-	@Size(min = 10, max = 10)
+	@Size(min = 4, max = 4)
 	private String yearPublished;
 
 	public Book() {
