@@ -7,6 +7,7 @@
     	var vm = this;
 
         vm.isHidden = false;
+        vm.addvalues = {'bookTitle': '' ,'genre' : '','yearPublished' : ''};
 
         vm.hideTable = function()
         {
@@ -23,6 +24,29 @@
                 vm.errorMessage = error;
             });
        }
+
+         vm.delete = function(bookToDelete) {
+           bookService.deleteBook(bookToDelete);
+           bookService.getBooks().then(function (results) {
+           vm.books = results;
+         });
+          }
+
+          vm.save = function() {
+            bookService.saveBook(vm.addvalues);
+            bookService.getBooks().then(function (results) {
+            vm.books = results;
+            vm.addvalues = "";
+            location.reload();
+
+          });
+           }
+
+
+
+
+
+
 
        init();
 

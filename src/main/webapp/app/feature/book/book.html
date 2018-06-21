@@ -3,17 +3,26 @@
 	    <div class="panel-body">
    		{{bookCtrl.test}}
    		<div ng-hide="bookCtrl.isHidden">
-        	<h3><span>Books table</span></h3>
+        	<h3><span>Books table </span></h3>
+					Search: <input ng-model="search">
         	<table class="table">
         		<tr>
         			<th>{{'bookTitle' | uppercase}}</th>
         			<th>{{'genre' | uppercase}}</th>
         			<th>{{'yearPublished' | uppercase}}</th>
+							<th></th>
         		</tr>
-        		<tr ng-repeat="book in bookCtrl.books">
+        		<tr ng-repeat="book in bookCtrl.books | filter:search">
         			<td>{{book.bookTitle}}</td>
         			<td>{{book.genre}}</td>
         			<td>{{book.yearPublished}}</td>
+							<td><button class="btn"ng-click="bookCtrl.delete(book)">Delete</button></td>
+        		</tr>
+						<tr>
+        			<td><input ng-model="bookCtrl.addvalues.bookTitle"></td>
+        			<td><input ng-model="bookCtrl.addvalues.genre"></td>
+        			<td><input ng-model="bookCtrl.addvalues.yearPublished"></td>
+							<td><button class="btn"ng-click="bookCtrl.save()">Add Book</button></td>
         		</tr>
         	</table>
         </div>
